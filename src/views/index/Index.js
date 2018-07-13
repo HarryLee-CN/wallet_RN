@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
-import {Button, View, Text} from 'react-native';
+import {View, Text} from 'react-native';
+import {Button} from 'antd-mobile-rn';
 
 class IndexScreen extends Component {
-    render() {
-        return (
-            <View>
-                <Text>Index Screen</Text>
-                <Button title={'Button'} onPress={()=>{alert('Touched!')}}/>
-            </View>
-        )
-    }
+  render() {
+    return (
+      <View>
+        <Text>Index Screen</Text>
+        <Button onClick={() => {
+          alert('Touched!')
+        }}>
+          Button
+        </Button>
+      </View>
+    )
+  }
 }
+
 export default IndexScreen
