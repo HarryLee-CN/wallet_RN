@@ -14,51 +14,38 @@ class IndexScreen extends Component {
       cards_coupons: 6,
       banner: [
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_1.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_1.png'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_2.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_2.png'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_1.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_1.png'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_2.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/banner_2.png'
         }
       ],
       modules: [
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/licai-new.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/licai-new.png',
+          text: '理财'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/credit-card-new.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/credit-card-new.png',
+          text: '信用卡'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/novel.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/novel.png',
+          text: '阅读'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/loan.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/loan.png',
+          text: '借钱'
         },
         {
-          img: {
-            uri: 'https://img.app.meitudata.com/c2p/app_store/bucket/to_be_continue.png'
-          }
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/to_be_continue.png',
+          text: '敬请期待'
         },
       ]
     }
@@ -134,7 +121,7 @@ class IndexScreen extends Component {
       >
         {this.state.banner.map((v, k) => {
           return (
-            <Image key={k} resizeMode={'cover'} source={v.img} style={{width: '100%', height: 97}}/>
+            <Image key={k} resizeMode={'cover'} source={{uri:v.img}} style={{width: '100%', height: 97}}/>
           )
         })}
       </Carousel>
@@ -143,18 +130,18 @@ class IndexScreen extends Component {
 
   renderModules() {
     let vw = Dimensions.get('window').width;
-    let vh = Dimensions.get('window').height;
-    console.log(vw,vh);
     let pw = vw/3;
     let ratio = 58/32;
     let ph = pw/ratio;
-    console.log(pw,ph);
     return (
       <View style={styles.modules}>
         {this.state.modules.map((v, k) => {
           return (
             <View key={k}>
-              <Image source={v.img} style={{width: pw, height: ph}}/>
+              <Image source={{uri: v.img}} style={{width: pw, height: ph}}/>
+              <Text>
+                {v.text}
+              </Text>
             </View>
           )
         })}
