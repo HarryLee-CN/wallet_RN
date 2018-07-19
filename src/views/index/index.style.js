@@ -62,7 +62,21 @@ const styles = StyleSheet.create({
   modules: {
     backgroundColor: '#fff',
     flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: 10,
+    paddingTop: 25
+  },
+  modules_content: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    // borderStyle: 'solid',
+    alignItems: 'center',
+    marginBottom: 25
+  },
+  modules_content_text: {
+    fontSize: 14,
+    color: '#333',
+    marginTop: 14
   }
 });
 export default styles

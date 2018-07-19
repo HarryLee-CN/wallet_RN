@@ -28,23 +28,23 @@ class IndexScreen extends Component {
       ],
       modules: [
         {
-          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/licai-new.png',
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/pig.s96bje7u.png',
           text: '理财'
         },
         {
-          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/credit-card-new.png',
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/card.s96bje7u.png',
           text: '信用卡'
         },
         {
-          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/novel.png',
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/novel.s96bje7u.png',
           text: '阅读'
         },
         {
-          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/loan.png',
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/loan.s96bje7u.png',
           text: '借钱'
         },
         {
-          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/to_be_continue.png',
+          img: 'https://img.app.meitudata.com/c2p/app_store/bucket/dots.s96bje7u.png',
           text: '敬请期待'
         },
       ]
@@ -130,16 +130,13 @@ class IndexScreen extends Component {
 
   renderModules() {
     let vw = Dimensions.get('window').width;
-    let pw = vw/3;
-    let ratio = 58/32;
-    let ph = pw/ratio;
     return (
       <View style={styles.modules}>
         {this.state.modules.map((v, k) => {
           return (
-            <View key={k}>
-              <Image source={{uri: v.img}} style={{width: pw, height: ph}}/>
-              <Text>
+            <View key={k} style={{...styles.modules_content,width: vw/3}}>
+              <Image resizeMode={'contain'} source={{uri: v.img}} style={{width: 29, height: 24}}/>
+              <Text style={styles.modules_content_text}>
                 {v.text}
               </Text>
             </View>
