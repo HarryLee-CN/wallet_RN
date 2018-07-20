@@ -18,6 +18,6 @@ const RootStack = createStackNavigator({
     })
   }
 }, {
-  initialRouteName: 'CardsCoupons',
+  initialRouteName: 'Index',
 });
 export default RootStack

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import styles from './Index.style';
 import Dimensions from 'Dimensions';
+
 let vw = Dimensions.get('window').width;
-import {View, Text, Image, ImageBackground, TouchableOpacity} from 'react-native';
+import {View, Text, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
 
 class IndexScreen extends Component {
@@ -65,7 +66,7 @@ class IndexScreen extends Component {
     return (
       <ImageBackground source={require('./img/bg_header.png')} resizeMode={'stretch'} style={styles.header}>
         <View style={styles.wallet_balance}>
-          <TouchableOpacity onPress={() => {
+          <TouchableWithoutFeedback onPress={() => {
             this.toAccount()
           }}>
             <View style={styles.wallet_balance_title}>
@@ -73,29 +74,27 @@ class IndexScreen extends Component {
               <Image style={styles.wallet_balance_arrow} resizeMode={'contain'}
                      source={require('./img/arrow_right.png')}/>
             </View>
-            <Text style={styles.wallet_balance_value}>
-              {this.state.wallet_balance}
-            </Text>
-          </TouchableOpacity>
+          </TouchableWithoutFeedback>
+          <Text onPress={() => {
+            this.toAccount()
+          }} style={styles.wallet_balance_value}>
+            {this.state.wallet_balance}
+          </Text>
         </View>
         <View style={styles.myCoins_myCoupons}>
           <View style={styles.each_side}>
-            <TouchableOpacity onPress={() => {
+            <Text onPress={() => {
               this.toAccount()
-            }}>
-              <Text style={styles.each_side_text}>
-                我的金币：<Text style={styles.each_side_text_value}>{this.state.coins}</Text>
-              </Text>
-            </TouchableOpacity>
+            }} style={styles.each_side_text}>
+              我的金币：<Text style={styles.each_side_text_value}>{this.state.coins}</Text>
+            </Text>
           </View>
           <View style={styles.each_side}>
-            <TouchableOpacity onPress={() => {
+            <Text onPress={() => {
               this.toCardsCoupons()
-            }}>
-              <Text style={styles.each_side_text}>
-                我的卡券：<Text style={styles.each_side_text_value}>{this.state.cards_coupons}</Text>
-              </Text>
-            </TouchableOpacity>
+            }} style={styles.each_side_text}>
+              我的卡券：<Text style={styles.each_side_text_value}>{this.state.cards_coupons}</Text>
+            </Text>
           </View>
         </View>
       </ImageBackground>
@@ -123,11 +122,11 @@ class IndexScreen extends Component {
       >
         {this.state.banner.map((v, k) => {
           return (
-            <TouchableOpacity key={k} onPress={()=>{
+            <TouchableWithoutFeedback key={k} onPress={() => {
               Toast.loading(v.link)
             }}>
-              <Image resizeMode={'cover'} source={{uri:v.img}} style={{height: 97}}/>
-            </TouchableOpacity>
+              <Image resizeMode={'cover'} source={{uri: v.img}} style={{height: 97}}/>
+            </TouchableWithoutFeedback>
           )
         })}
       </Carousel>
@@ -139,16 +138,16 @@ class IndexScreen extends Component {
       <View style={styles.modules}>
         {this.state.modules.map((v, k) => {
           return (
-            <TouchableOpacity key={k} onPress={()=>{
+            <TouchableWithoutFeedback key={k} onPress={() => {
               Toast.loading(v.url)
             }}>
-              <View style={{...styles.modules_content,width: vw/3}}>
+              <View style={{...styles.modules_content, width: vw / 3}}>
                 <Image resizeMode={'contain'} source={{uri: v.img}} style={{width: 29, height: 24}}/>
                 <Text style={styles.modules_content_text}>
                   {v.text}
                 </Text>
               </View>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback>
           )
         })}
       </View>
