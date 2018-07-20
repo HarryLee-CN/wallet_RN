@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import styles from './index.style';
+import styles from './Index.style';
 import Dimensions from 'Dimensions';
+let vw = Dimensions.get('window').width;
 import {View, Text, Image, ImageBackground, TouchableOpacity} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
 
@@ -29,7 +30,8 @@ class IndexScreen extends Component {
       modules: [
         {
           img: 'https://img.app.meitudata.com/c2p/app_store/bucket/pig.s96bje7u.png',
-          text: '理财'
+          text: '理财',
+          url: 'https://licai.meitu.com'
         },
         {
           img: 'https://img.app.meitudata.com/c2p/app_store/bucket/card.s96bje7u.png',
@@ -55,8 +57,8 @@ class IndexScreen extends Component {
     Toast.loading('toAccount')
   }
 
-  toCardCoupons() {
-    Toast.loading('toCardCoupons')
+  toCardsCoupons() {
+    this.props.navigation.navigate('CardsCoupons')
   }
 
   renderHeader() {
@@ -88,7 +90,7 @@ class IndexScreen extends Component {
           </View>
           <View style={styles.each_side}>
             <TouchableOpacity onPress={() => {
-              this.toCardCoupons()
+              this.toCardsCoupons()
             }}>
               <Text style={styles.each_side_text}>
                 我的卡券：<Text style={styles.each_side_text_value}>{this.state.cards_coupons}</Text>
@@ -121,7 +123,11 @@ class IndexScreen extends Component {
       >
         {this.state.banner.map((v, k) => {
           return (
-            <Image key={k} resizeMode={'cover'} source={{uri:v.img}} style={{width: '100%', height: 97}}/>
+            <TouchableOpacity key={k} onPress={()=>{
+              Toast.loading(v.link)
+            }}>
+              <Image resizeMode={'cover'} source={{uri:v.img}} style={{height: 97}}/>
+            </TouchableOpacity>
           )
         })}
       </Carousel>
@@ -129,17 +135,20 @@ class IndexScreen extends Component {
   }
 
   renderModules() {
-    let vw = Dimensions.get('window').width;
     return (
       <View style={styles.modules}>
         {this.state.modules.map((v, k) => {
           return (
-            <View key={k} style={{...styles.modules_content,width: vw/3}}>
-              <Image resizeMode={'contain'} source={{uri: v.img}} style={{width: 29, height: 24}}/>
-              <Text style={styles.modules_content_text}>
-                {v.text}
-              </Text>
-            </View>
+            <TouchableOpacity key={k} onPress={()=>{
+              Toast.loading(v.url)
+            }}>
+              <View style={{...styles.modules_content,width: vw/3}}>
+                <Image resizeMode={'contain'} source={{uri: v.img}} style={{width: 29, height: 24}}/>
+                <Text style={styles.modules_content_text}>
+                  {v.text}
+                </Text>
+              </View>
+            </TouchableOpacity>
           )
         })}
       </View>

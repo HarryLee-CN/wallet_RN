@@ -1,9 +1,6 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-  Index: {
-    flex: 1,
-  },
   header: {
     height: 175,
   },
