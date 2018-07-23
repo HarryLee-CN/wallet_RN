@@ -3,7 +3,7 @@ import styles from './Index.style';
 import Dimensions from 'Dimensions';
 
 let vw = Dimensions.get('window').width;
-import {View, Text, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, Image, TouchableWithoutFeedback} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
 
 class CardsCouponsScreen extends Component {
@@ -22,7 +22,14 @@ class CardsCouponsScreen extends Component {
         },
       ]
     }
+  }
 
+  toCards() {
+    this.props.navigation.navigate('Cards')
+  }
+
+  toCoupons() {
+    this.props.navigation.navigate('Coupons')
   }
 
   renderBanner() {
@@ -59,34 +66,42 @@ class CardsCouponsScreen extends Component {
   renderEntry() {
     return (
       <View style={styles.entry_container}>
-        <View style={{...styles.entry, width: vw * 0.92}}>
-          <View style={styles.entry_left}>
-            <Image source={require('./img/icon_card.png')} style={{width: 23, height: 19}}/>
-            <Text>
-              卡包
-            </Text>
+        <TouchableWithoutFeedback onPress={()=>{
+          this.toCards()
+        }}>
+          <View style={{...styles.entry, width: vw * 0.92}}>
+            <View style={styles.entry_left}>
+              <Image source={require('./img/icon_card.png')} style={{width: 23, height: 19}}/>
+              <Text style={styles.entry_text}>
+                卡包
+              </Text>
+            </View>
+            <View style={styles.entry_right}>
+              <Text style={styles.entry_text}>
+                3
+              </Text>
+              <Image source={require('./img/arrow_right.png')} style={{width: 9.5, height: 17.5}}/>
+            </View>
           </View>
-          <View style={styles.entry_right}>
-            <Text>
-              3
-            </Text>
-            <Image source={require('./img/arrow_right.png')} style={{width: 9.5, height: 17.5}}/>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={()=>{
+          this.toCoupons()
+        }}>
+          <View style={{...styles.entry, width: vw * 0.92}}>
+            <View style={styles.entry_left}>
+              <Image source={require('./img/icon_coupons.png')} style={{width: 23, height: 17.5}}/>
+              <Text style={styles.entry_text}>
+                优惠券
+              </Text>
+            </View>
+            <View style={styles.entry_right}>
+              <Text style={styles.entry_text}>
+                14
+              </Text>
+              <Image source={require('./img/arrow_right.png')} style={{width: 9.5, height: 17.5}}/>
+            </View>
           </View>
-        </View>
-        <View style={{...styles.entry, width: vw * 0.92}}>
-          <View style={styles.entry_left}>
-            <Image source={require('./img/icon_coupons.png')} style={{width: 23, height: 17.5}}/>
-            <Text>
-              优惠券
-            </Text>
-          </View>
-          <View style={styles.entry_right}>
-            <Text>
-              14
-            </Text>
-            <Image source={require('./img/arrow_right.png')} style={{width: 9.5, height: 17.5}}/>
-          </View>
-        </View>
+        </TouchableWithoutFeedback>
       </View>
     )
   }

@@ -19,10 +19,26 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   entry_left: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    // borderStyle: 'solid',
     flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 15,
   },
   entry_right: {
+    // borderWidth: 1,
+    // borderColor: 'red',
+    // borderStyle: 'solid',
     flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 15,
+  },
+  entry_text: {
+    color: '#333',
+    fontSize: 17,
+    marginLeft: 15,
+    marginRight: 15
   }
 });
 export default styles
