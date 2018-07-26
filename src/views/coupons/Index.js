@@ -9,10 +9,7 @@ import {Toast, Carousel} from 'antd-mobile-rn';
 class CouponsScreen extends Component {
   render() {
     return (
-      <Text style={{
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
+      <Text>
         优惠券
       </Text>
     )
