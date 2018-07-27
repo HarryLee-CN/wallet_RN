@@ -29,7 +29,8 @@ class CardsCouponsScreen extends Component {
   }
 
   toCoupons() {
-    this.props.navigation.navigate('Coupons')
+    alert('敬请期待！')
+    // this.props.navigation.navigate('Coupons')
   }
 
   renderBanner() {
