@@ -22,41 +22,50 @@ class CardsScreen extends Component {
 
   }
 
+  toCollapse() {
+    Animated.spring(// 随时间变化而执行的动画类型
+      this.state.marginAnim,// 动画中的变量值
+      {
+        toValue: -105,// 透明度最终变为1，即完全不透明
+        useNativeDriver: false,
+        delay: 0,
+        duration: 350,
+        bounciness: 12,
+        onComplete: ({finished}) => {
+          console.log('onComplete', finished);
+        }
+      }
+    ).start();
+  }
+
+  unCollapse() {
+    Animated.spring(// 随时间变化而执行的动画类型
+      this.state.marginAnim,// 动画中的变量值
+      {
+        toValue: 0,// 透明度最终变为1，即完全不透明
+        useNativeDriver: false,
+        delay: 0,
+        duration: 350,
+        bounciness: 12,
+        onComplete: ({finished}) => {
+          console.log('onComplete', finished);
+        }
+      }
+    ).start();// 开始执行动画
+  }
+
   handleClick() {
+    /**是否为折叠态**/
     if (this.state.isCollapsed) {
       this.setState({
         isCollapsed: false
       });
-      Animated.spring(// 随时间变化而执行的动画类型
-        this.state.marginAnim,// 动画中的变量值
-        {
-          toValue: 0,// 透明度最终变为1，即完全不透明
-          useNativeDriver: false,
-          delay: 0,
-          duration: 350,
-          bounciness: 12,
-          onComplete: ({finished}) => {
-            console.log('onComplete', finished);
-          }
-        }
-      ).start();// 开始执行动画
+      this.unCollapse();
     } else {
       this.setState({
         isCollapsed: true
       });
-      Animated.spring(// 随时间变化而执行的动画类型
-        this.state.marginAnim,// 动画中的变量值
-        {
-          toValue: -105,// 透明度最终变为1，即完全不透明
-          useNativeDriver: false,
-          delay: 0,
-          duration: 350,
-          bounciness: 12,
-          onComplete: ({finished}) => {
-            console.log('onComplete', finished);
-          }
-        }
-      ).start();
+      this.toCollapse()
     }
   }
 
