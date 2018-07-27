@@ -53,7 +53,7 @@ class CardsCouponsScreen extends Component {
         {this.state.banner.map((v, k) => {
           return (
             <TouchableWithoutFeedback key={k} onPress={() => {
-              Toast.loading(v.link)
+              alert('敬请期待！')
             }}>
               <Image resizeMode={'cover'} source={{uri: v.img}} style={{height: 125}}/>
             </TouchableWithoutFeedback>

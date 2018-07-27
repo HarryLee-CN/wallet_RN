@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     borderColor: '#fff',
     borderStyle: 'solid',
     borderRadius: 10,
-    backgroundColor: '#4a97f3',
+    // backgroundColor: '#4a97f3',
   }
 });
 export default styles

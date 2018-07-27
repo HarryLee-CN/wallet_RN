@@ -34,6 +34,6 @@ const RootStack = createStackNavigator({
     })
   }
 }, {
-  initialRouteName: 'Index',
+  initialRouteName: 'Cards',
 });
 export default RootStack

@@ -12,43 +12,48 @@ class CardsScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      marginAnim: new Animated.Value(0),          // 透明度初始值设为0
-      cards_list: [{}, {}, {}, {}, {}]
+      marginAnim: new Animated.Value(-105), // 透明度初始值设为0
+      isCollapsed: true,
+      cards_list: [{}, {}, {}, {}, {}, {}]
     };
   }
 
-  componentDidMount() {                                 // 开始执行动画
+  componentDidMount() {
+
   }
 
   handleClick() {
-    console.log('start', this.state.marginAnim._value);
-    if (this.state.marginAnim._value === 0) {
-      Animated.spring(                            // 随时间变化而执行的动画类型
-        this.state.marginAnim,                      // 动画中的变量值
+    if (this.state.isCollapsed) {
+      this.setState({
+        isCollapsed: false
+      });
+      Animated.spring(// 随时间变化而执行的动画类型
+        this.state.marginAnim,// 动画中的变量值
         {
-          toValue: -105,                             // 透明度最终变为1，即完全不透明
+          toValue: 0,// 透明度最终变为1，即完全不透明
           useNativeDriver: false,
           delay: 0,
           duration: 350,
           bounciness: 12,
           onComplete: ({finished}) => {
             console.log('onComplete', finished);
-            console.log('end', this.state.marginAnim._value)
           }
         }
-      ).start();
+      ).start();// 开始执行动画
     } else {
-      Animated.spring(                            // 随时间变化而执行的动画类型
-        this.state.marginAnim,                      // 动画中的变量值
+      this.setState({
+        isCollapsed: true
+      });
+      Animated.spring(// 随时间变化而执行的动画类型
+        this.state.marginAnim,// 动画中的变量值
         {
-          toValue: 0,                             // 透明度最终变为1，即完全不透明
+          toValue: -105,// 透明度最终变为1，即完全不透明
           useNativeDriver: false,
           delay: 0,
           duration: 350,
           bounciness: 12,
           onComplete: ({finished}) => {
             console.log('onComplete', finished);
-            console.log(this.state.marginAnim._value)
           }
         }
       ).start();
@@ -57,34 +62,39 @@ class CardsScreen extends Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={() => {
-        this.handleClick()
+      <ScrollView contentContainerStyle={{
+        ...styles.cards,
+        width: vw
       }}>
-        {/*<ScrollView>*/}
-        <View style={{
-          ...styles.cards,
-          width: vw
-        }}>
-          {this.state.cards_list.map((v, k) => (
-            <Animated.View key={k} style={{
+        {this.state.cards_list.map((v, k) => (
+          <TouchableWithoutFeedback key={k} onPress={() => {
+            this.handleClick()
+          }}>
+            <Animated.View style={{
               marginTop: k !== 0 && this.state.marginAnim,
             }}>
-              <Card style={{
-                margin: 2,
-                shadowOffset: {
-                  width: 2,
-                  height: 2
-                },
-                shadowColor: '#333333',
-                shadowOpacity: 0.5,
-                shadowRadius: 1,
-                shadowBlur: 5
-              }}/>
+              <Card
+                source={
+                  k % 3 === 0 ? require('./img/bg_card1.png') :
+                    k % 3 === 1 ? require('./img/bg_card2.png') :
+                      k % 3 === 2 ? require('./img/bg_card3.png') :
+                        ''}
+                resizeMode={'cover'}
+                style={{
+                  margin: 3,
+                  shadowOffset: {
+                    width: 2,
+                    height: 2
+                  },
+                  shadowColor: '#333333',
+                  shadowOpacity: 0.5,
+                  shadowRadius: 1,
+                  shadowBlur: 5
+                }}/>
             </Animated.View>
-          ))}
-        </View>
-        {/*</ScrollView>*/}
-      </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback>
+        ))}
+      </ScrollView>
     );
   }
 }
