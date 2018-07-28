@@ -73,7 +73,7 @@ class CardsScreen extends Component {
     return (
       <ScrollView contentContainerStyle={{
         ...styles.cards,
-        width: vw
+        // width: vw
       }}>
         {this.state.cards_list.map((v, k) => (
           <TouchableWithoutFeedback key={k} onPress={() => {
