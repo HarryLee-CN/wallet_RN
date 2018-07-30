@@ -5,6 +5,7 @@ import Dimensions from 'Dimensions';
 let vw = Dimensions.get('window').width;
 import {View, Text, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
+import {ajax} from "../../utils/fetch";
 
 class IndexScreen extends Component {
 
@@ -52,6 +53,19 @@ class IndexScreen extends Component {
         },
       ]
     }
+  }
+
+  componentDidMount() {
+    this.getData()
+  }
+
+  getData() {
+    ajax({
+      method: 'get',
+      url: '/page/members/info',
+    }).then(res=>{
+      Toast.info(res.msg)
+    })
   }
 
   toAccount() {
