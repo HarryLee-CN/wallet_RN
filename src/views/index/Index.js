@@ -69,7 +69,7 @@ class IndexScreen extends Component {
   }
 
   toAccount() {
-    alert('敬请期待！')
+    Toast.info('敬请期待！')
   }
 
   toCardsCoupons() {
@@ -137,7 +137,7 @@ class IndexScreen extends Component {
         {this.state.banner.map((v, k) => {
           return (
             <TouchableWithoutFeedback key={k} onPress={() => {
-              alert('敬请期待！')
+              Toast.info('敬请期待！')
             }}>
               <Image resizeMode={'cover'} source={{uri: v.img}} style={{height: 97}}/>
             </TouchableWithoutFeedback>
@@ -153,7 +153,7 @@ class IndexScreen extends Component {
         {this.state.modules.map((v, k) => {
           return (
             <TouchableWithoutFeedback key={k} onPress={() => {
-              alert('敬请期待！')
+              Toast.info('敬请期待！')
             }}>
               <View style={{...styles.modules_content, width: vw / 3}}>
                 <Image resizeMode={'contain'} source={{uri: v.img}} style={{width: 29, height: 24}}/>

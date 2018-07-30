@@ -29,7 +29,7 @@ class CardsCouponsScreen extends Component {
   }
 
   toCoupons() {
-    alert('敬请期待！')
+    Toast.info('敬请期待！')
     // this.props.navigation.navigate('Coupons')
   }
 
@@ -54,7 +54,7 @@ class CardsCouponsScreen extends Component {
         {this.state.banner.map((v, k) => {
           return (
             <TouchableWithoutFeedback key={k} onPress={() => {
-              alert('敬请期待！')
+              Toast.info('敬请期待！')
             }}>
               <Image resizeMode={'cover'} source={{uri: v.img}} style={{height: 125}}/>
             </TouchableWithoutFeedback>
