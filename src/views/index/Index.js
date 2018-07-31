@@ -3,7 +3,7 @@ import styles from './Index.style';
 import Dimensions from 'Dimensions';
 
 let vw = Dimensions.get('window').width;
-import {View, Text, Image, ImageBackground, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, Image, ImageBackground, TouchableWithoutFeedback, RefreshControl, ScrollView} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
 import {ajax} from "../../utils/fetch";
 
@@ -12,6 +12,8 @@ class IndexScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      refreshing: false,
+      refreshTitle: '拼命加载中...',
       wallet_balance: 67.88,
       coins: 364,
       cards_coupons: 6,
@@ -51,11 +53,19 @@ class IndexScreen extends Component {
           img: 'https://img.app.meitudata.com/c2p/app_store/bucket/dots.s96bje7u.png',
           text: '敬请期待'
         },
-      ]
-    }
+      ],
+    };
+    this._onRefresh = this._onRefresh.bind(this)
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  _onRefresh() {
+    this.setState({
+      refreshing: true,
+    });
     this.getData()
   }
 
@@ -63,8 +73,11 @@ class IndexScreen extends Component {
     ajax({
       method: 'get',
       url: '/page/members/info',
-    }).then(res=>{
-      Toast.info(res.msg)
+    }).then(res => {
+      Toast.info(res.msg, 3, () => {}, false);
+      this.setState({
+        refreshing: false
+      });
     })
   }
 
@@ -170,11 +183,17 @@ class IndexScreen extends Component {
 
   render() {
     return (
-      <View style={styles.Index}>
+      <ScrollView style={styles.Index} refreshControl={
+        <RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+          title={this.state.refreshTitle}
+        />
+      }>
         {this.renderHeader()}
         {this.renderBanner()}
         {this.renderModules()}
-      </View>
+      </ScrollView>
     )
   }
 }
