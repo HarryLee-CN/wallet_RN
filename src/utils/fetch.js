@@ -12,6 +12,7 @@
  *
  * **/
 import {Toast} from 'antd-mobile-rn'
+import Api from './Api'
 
 function checkResponse(res) {
   switch (res.code) {
