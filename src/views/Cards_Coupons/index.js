@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './Index.style';
+import styles from './index.style';
 import Dimensions from 'Dimensions';
 
 let vw = Dimensions.get('window').width;
@@ -29,8 +29,7 @@ class CardsCouponsScreen extends Component {
   }
 
   toCoupons() {
-    Toast.info('敬请期待！')
-    // this.props.navigation.navigate('Coupons')
+    this.props.navigation.navigate('Coupons')
   }
 
   renderBanner() {

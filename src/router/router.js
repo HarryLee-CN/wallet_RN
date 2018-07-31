@@ -1,8 +1,9 @@
 import {createStackNavigator} from 'react-navigation';
-import IndexScreen from '../views/index/Index'
-import CardsCouponsScreen from '../views/cards_coupons/Index'
-import CardsScreen from '../views/cards/Index'
-import CouponsScreen from '../views/coupons/Index'
+import IndexScreen from '../views/Index'
+import AccountScreen from '../views/Account'
+import CardsCouponsScreen from '../views/Cards_Coupons'
+import CardsScreen from '../views/Cards'
+import CouponsScreen from '../views/Coupons'
 
 const RootStack = createStackNavigator({
   Index: {
@@ -10,6 +11,13 @@ const RootStack = createStackNavigator({
     path: 'index',
     navigationOptions: ({navigation}) => ({
       title: '我的钱包'
+    }),
+  },
+  Account: {
+    screen: AccountScreen,
+    path: 'account',
+    navigationOptions: ({navigation}) => ({
+      title: '我的账户'
     }),
   },
   CardsCoupons: {

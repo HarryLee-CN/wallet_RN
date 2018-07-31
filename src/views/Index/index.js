@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './Index.style';
+import styles from './index.style';
 import Dimensions from 'Dimensions';
 
 let vw = Dimensions.get('window').width;
@@ -82,7 +82,7 @@ class IndexScreen extends Component {
   }
 
   toAccount() {
-    Toast.info('敬请期待！')
+    this.props.navigation.navigate('Account')
   }
 
   toCardsCoupons() {

@@ -31,7 +31,7 @@ async function rawAjax(params) {
   const {
     url, method, data
   } = params;
-  let Api = 'https://wallet.meitu.com';
+  // let Api = '';
   // if (process.env.NODE_ENV === 'development') {
   //   Api = '/devApi'
   // } else {
