@@ -13,7 +13,7 @@ class IndexScreen extends Component {
     super(props);
     this.state = {
       refreshing: false,
-      refreshTitle: '拼命加载中...',
+      refreshTitle: '下拉刷新',
       wallet_balance: 67.88,
       coins: 364,
       cards_coupons: 6,
