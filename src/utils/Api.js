@@ -1,1 +1,0 @@
-export default Api = 'https://wallet.meitu.com'
