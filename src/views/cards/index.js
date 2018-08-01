@@ -6,7 +6,7 @@ let vw = Dimensions.get('window').width;
 import {Animated, View, Text, Image, ScrollView, TouchableWithoutFeedback} from 'react-native';
 import {Toast, Carousel} from 'antd-mobile-rn';
 
-import Card from '../../components/Card'
+import Card from '../../components/card'
 
 class CardsScreen extends Component {
   constructor(props) {

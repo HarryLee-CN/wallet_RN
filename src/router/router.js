@@ -1,9 +1,9 @@
 import {createStackNavigator} from 'react-navigation';
-import IndexScreen from '../views/Index'
-import AccountScreen from '../views/Account'
-import CardsCouponsScreen from '../views/Cards_Coupons'
-import CardsScreen from '../views/Cards'
-import CouponsScreen from '../views/Coupons'
+import IndexScreen from '../views/index'
+import AccountScreen from '../views/account'
+import CardsCouponsScreen from '../views/cards_coupons'
+import CardsScreen from '../views/cards'
+import CouponsScreen from '../views/coupons'
 
 const RootStack = createStackNavigator({
   Index: {
